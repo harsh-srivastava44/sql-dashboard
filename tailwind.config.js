@@ -1,11 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    container: {
+      center: true, 
+      
+    },
+    margin: {
+      sm: "2rem",
+      lg: "2rem",
+      xl: "2rem",
+      "2xl": "2rem"
+    },
+    extend: {
+      gridTemplateRows : {
+        '9' : 'repeat(9, minmax(0,1fr))'
+      },
+      gridRowEnd: {
+        '10' : '10'
+      }
+    },
   },
-  plugins: [],
-}
+  plugins: [
+    require('flowbite/plugin')
+  ],
+};

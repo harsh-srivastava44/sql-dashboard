@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.box {
+    @apply bg-gray-100 text-black min-w-full h-32 min-h-full rounded-lg;
+}
+
+.editor-box {
+    @apply min-w-full min-h-full
+}
+
+.editor-container {
+    @apply min-h-full min-w-full rounded h-full;
+}
+
+.editor {
+    @apply border-2 rounded-md
+}
+
+.actions {
+    background-color: none;
+}
+
+.result {
+    @apply rounded-xl
+}
+
+.ag-center-cols-container {
+    width: 100% !important;
+}
+
+.table-accordion>* .overflow-x-auto {
+    position: unset;
+}

@@ -1,0 +1,20 @@
+const shippers =
+    [
+        {
+            "shipperID": 1,
+            "companyName": "Speedy Express",
+            "phone": "(503) 555-9831"
+        },
+        {
+            "shipperID": 2,
+            "companyName": "United Package",
+            "phone": "(503) 555-3199"
+        },
+        {
+            "shipperID": 3,
+            "companyName": "Federal Shipping",
+            "phone": "(503) 555-9931"
+        }
+    ]
+
+export default shippers

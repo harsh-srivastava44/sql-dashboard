@@ -6,6 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.4.6",
+    "ag-grid-community": "^28.2.0",
+    "ag-grid-react": "^28.2.0",
+    "flowbite": "^1.5.3",
+    "flowbite-react": "^0.3.2",
+    "monaco-editor": ">=0.25.0 <1.0.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0"
