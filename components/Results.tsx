@@ -12,16 +12,9 @@ import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 import { Columns, getColumns } from "utils/arrayUtils";
 
-export const Results = () => {
-  const gridRef = useRef(); // Optional - for accessing Grid's API
-  const [rowData, setRowData] = useState([]); // Set rowData to Array of Objects, one Object per Row
-  // Each Column Definition results in one Column.
-  const [isLoaded, setIsLoaded] = useState(true);
-  const [columnDefs, setColumnDefs] = useState([
-    { field: "make", filter: true },
-    { field: "model", filter: true },
-    { field: "price" },
-  ]);
+export const Results = ({ isLoaded, data=[]}: any) => {
+ 
+  const [columnDefs, setColumnDefs] = useState<Columns[]>();
 
   // DefaultColDef sets props common to all Columns
   const defaultColDef = useMemo(
@@ -32,27 +25,19 @@ export const Results = () => {
   );
 
   // Example of consuming Grid Event
-  const cellClickedListener = useCallback((event: any) => {
-    console.log("cellClicked", event);
-  }, []);
+  const cellClickedListener = useCallback((event: any) => {}, []);
 
-  // Example load data from sever
+ 
   useEffect(() => {
-    fetch("http://localhost:3000/api/query?pagination=5&table=categories")
-      .then((result) => result.json())
-      .then((rowData) => {
-        setRowData(rowData)
-       
-      });
-  }, []);
-  useEffect(() => {
-    let columns = getColumns(rowData) as Array<Columns>;
+    console.log('📞',data);
+    
+    let columns = getColumns(data) as Array<Columns>;
     setColumnDefs(columns);
-  },[rowData])
+  }, [data]);
   return isLoaded ? (
     <div className="ag-theme-alpine" style={{ width: "100%", height: "100%" }}>
       <AgGridReact
-        rowData={rowData} // Row Data for Rows
+        rowData={data} // Row Data for Rows
         columnDefs={columnDefs} // Column Defs for Columns
         defaultColDef={defaultColDef} // Default Column Properties
         animateRows={true} // Optional - set to 'true' to have rows animate when sorted

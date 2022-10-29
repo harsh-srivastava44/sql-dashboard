@@ -22,7 +22,7 @@ export default function handler(
 ) {
   let data = []
   const { pagination, table }: Partial<{ pagination: string, table: string }> = req.query
-  console.log('🚀', table);
+ 
 
   if (!table) return res.status(400).send('No table name provided')
   if (pagination) {

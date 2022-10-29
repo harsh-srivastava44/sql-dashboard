@@ -14,8 +14,9 @@
     @apply min-h-full min-w-full rounded h-full;
 }
 
-.editor {
-    @apply border-2 rounded-md
+.editor>section {
+    border: 2px solid lightgray;
+    border-radius: .5rem;
 }
 
 .actions {
