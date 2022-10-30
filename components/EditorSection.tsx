@@ -3,22 +3,26 @@ import { Actions } from "components/Actions";
 import { Results } from "components/Results";
 import { SQLEditor } from "components/SQLEditor";
 import { get } from "utils/apiUtils";
+import { useDashboardContext } from "contexts/dashboard-provider";
 
 export const EditorSection = () => {
-  const tableName = useRef("");
-  const querySize = useRef(0);
-  const captureEditorValue = (name: string, count: number) => {
-    console.log("🏓", name, count);
-
-    tableName.current = name;
-    querySize.current = count;
-  };
   const [errorInQUery, setErrorInQUery] = useState(false);
+  const [isDataFetching, setIsDataFetching] = useState(false);
+  const { addToHistory, saveQuery, clearEditor } = useDashboardContext();
   const [data, setData] = useState([]);
 
-  const clearEditor = () => {};
-  const saveQuery = () => {};
-  const [isDataFetching, setIsDataFetching] = useState(false);
+  const tableName = useRef("");
+  const querySize = useRef(0);
+  const userQuery = useRef("");
+
+  const captureEditorValue = (name: string, count: number, query: string) => {
+    userQuery.current = query;
+    tableName.current = name;
+    querySize.current = count;
+  }; 
+  const bookmarkQuery = () => {
+    if (userQuery.current !== "") saveQuery?.(userQuery.current);
+  };
   const executeQuery = async () => {
     if (tableName.current == "") {
       setErrorInQUery(true);
@@ -33,8 +37,9 @@ export const EditorSection = () => {
           table: tableName.current,
         });
         setData(data);
-      } catch (error:any) {
-        console.log(error); 
+        addToHistory?.(userQuery.current);
+      } catch (error: any) {
+        console.log(error);
       } finally {
         setIsDataFetching((prev) => false);
       }
@@ -50,7 +55,7 @@ export const EditorSection = () => {
         <Actions
           executeQuery={executeQuery}
           clearEditor={clearEditor}
-          saveQuery={saveQuery}
+          saveQuery={bookmarkQuery}
         />
       </div>
       <div className=" row-start-5 row-end-10 col-start-1 col-end-2">

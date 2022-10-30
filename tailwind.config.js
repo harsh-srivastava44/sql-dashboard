@@ -10,12 +10,7 @@ module.exports = {
       center: true, 
       
     },
-    margin: {
-      sm: "2rem",
-      lg: "2rem",
-      xl: "2rem",
-      "2xl": "2rem"
-    },
+    
     extend: {
       gridTemplateRows : {
         '9' : 'repeat(9, minmax(0,1fr))'

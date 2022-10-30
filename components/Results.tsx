@@ -29,7 +29,6 @@ export const Results = ({ isLoaded, data=[]}: any) => {
 
  
   useEffect(() => {
-    console.log('📞',data);
     
     let columns = getColumns(data) as Array<Columns>;
     setColumnDefs(columns);
