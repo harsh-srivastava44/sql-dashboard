@@ -44,12 +44,12 @@ export const DashboardManager = ({ children }: DashboardProps): JSX.Element => {
       setState({ ...state, currentEditorValue: value });
     };
     const clearEditor = () => {
-      updateState.currentEditorValue = initialState.currentEditorValue;
-      console.log('👉🏻', initialState.currentEditorValue);
+      updateState.currentEditorValue = '// insert query here';
+     
       
       setState({
         ...state,
-        currentEditorValue: initialState.currentEditorValue,
+        currentEditorValue: '// insert query here'
       });
     };
     return {

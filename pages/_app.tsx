@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <div className="px-4 min-h-screen md:container md:mx-auto ">
+  return <div className="h-100 px-4 md:mx-auto aspect-ratio: auto;">
     <Component {...pageProps} />
   </div>
 }

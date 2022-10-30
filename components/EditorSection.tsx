@@ -23,6 +23,9 @@ export const EditorSection = () => {
   const bookmarkQuery = () => {
     if (userQuery.current !== "") saveQuery?.(userQuery.current);
   };
+  const cleanEditorContent = () => {
+    clearEditor?.()
+  }
   const executeQuery = async () => {
     if (tableName.current == "") {
       setErrorInQUery(true);
@@ -54,7 +57,7 @@ export const EditorSection = () => {
       <div className=" row-start-4  row-end-5 col-start-1 col-end-2 pt-4 h-4">
         <Actions
           executeQuery={executeQuery}
-          clearEditor={clearEditor}
+          clearEditor={cleanEditorContent}
           saveQuery={bookmarkQuery}
         />
       </div>
